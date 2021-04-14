@@ -1,0 +1,10 @@
+import re
+def grades():
+    with open ("assets/grades.txt", "r") as file:
+        grades = file.read()
+        bnames = []
+        for x in re.finditer("([\w]*[\s][\w]*)([:][\s][B])", grades):
+            bnames.append(x.group(1)) 
+    return bnames
+            
+            
