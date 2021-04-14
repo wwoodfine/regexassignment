@@ -1,0 +1,19 @@
+import re
+def logs():
+    with open("assets/logdata.txt", "r") as file:
+        logdata = file.read()
+    dictionaries=[]
+    pattern="""
+    (?P<host>\d*\.\d*\.\d*\.\d*)
+    (\s\-\s)
+    (?P<user_name>.*)
+    (\s\[)
+    (?P<time>.*)
+    (\]\s\")
+    (?P<request>.*)
+    (\")
+             
+    """
+    for x in re.finditer(pattern, logdata, re.VERBOSE):
+        dictionaries.append(x.groupdict())
+    return (dictionaries)
